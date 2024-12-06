@@ -1,0 +1,82 @@
+Schema: AutoRental
+Entities and Tables
+
+
+Customers
+Stores information about customers.
+
+CustomerID (Primary Key)
+FirstName
+LastName
+Email
+Phone
+Address
+DateOfBirth
+LicenseNumber
+CreatedAt
+
+
+Vehicles
+Contains details about rental vehicles.
+
+VehicleID (Primary Key)
+LicensePlate
+Make (e.g., Toyota, Honda)
+Model (e.g., Camry, Civic)
+Year
+VehicleType (e.g., SUV, Sedan, Truck)
+DailyRate
+Status (Available, Rented, Maintenance)
+LocationID (Foreign Key -> Locations.LocationID)
+
+
+RentalAgreements
+Tracks individual rental transactions.
+
+RentalID (Primary Key)
+CustomerID (Foreign Key -> Customers.CustomerID)
+VehicleID (Foreign Key -> Vehicles.VehicleID)
+RentalStartDate
+RentalEndDate
+TotalAmount
+PaymentStatus (Paid, Pending)
+
+
+Locations
+Stores information about rental locations.
+
+LocationID (Primary Key)
+LocationName
+Address
+City
+State
+ZipCode
+
+Payments
+Manages payment transactions.
+
+PaymentID (Primary Key)
+RentalID (Foreign Key -> RentalAgreements.RentalID)
+PaymentDate
+AmountPaid
+PaymentMethod (Credit Card, Cash, Bank Transfer)
+
+VehicleMaintenance
+Tracks maintenance records for vehicles.
+
+MaintenanceID (Primary Key)
+VehicleID (Foreign Key -> Vehicles.VehicleID)
+MaintenanceDate
+MaintenanceDescription
+Cost
+NextMaintenanceDate
+
+Staff
+Tracks staff managing rental locations.
+
+StaffID (Primary Key)
+FirstName
+LastName
+Position
+LocationID (Foreign Key -> Locations.LocationID)
+
